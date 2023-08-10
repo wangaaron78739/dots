@@ -1,0 +1,33 @@
+set shell := ["fish", "-c"]
+set positional-arguments
+
+export justrun := just_executable() + " -d " + inst-script-dir + " -f " + justfile() 
+
+########################################################
+## Most config variables below here
+########################################################
+
+to-root := "0"
+export sysinstalldir := "/usr/local"
+export blddir := "~/.git-builds"
+bldprefix := blddir + "/"
+export inst-script-dir := "~/.install-system.sh"
+export installdir := if to-root != "0" { sysinstalldir } else {  "$HOME/.local" }
+
+# The best way to use mold is by prefixing `lets install ...` with `mold --run `
+export LD := "lld" # gold, mold, lld
+export CC :=  "gcc" # gcc-11, clang, clang-12, zig cc, tinycc, zapcc
+# CXX := "g++" # g++-11, clang++, clang++-12, zig c++
+export CXX := replace(replace(replace(CC, "gcc", "g++"), "clang", "clang++"), "cc", "c++")
+
+static := "0" # TODO: every project needs a different flag for static
+native := "1"
+
+use-sccache := "1" # TODO: apply this to c/c++
+use-musl := "0" # Used only for cargo for now
+cargo-bg := "0"
+
+
+########################################################
+## Most config variables above here
+########################################################

@@ -1,0 +1,18 @@
+set shell := ["fish", "-c"]
+wd := invocation_directory()
+
+@_default: 
+    just -f {{justfile()}} -l
+
+@edit:
+    cd {{justfile_directory()}} && nvim {{justfile()}}
+
+@new-lets name:
+    cp {{justfile_directory()}}/template {{justfile_directory()}}/{{name}}.just
+    nvim {{justfile_directory()}}/{{name}}.just
+
+@nvim *commands:
+    cd ~/.config/nvim/ && just {{commands}}
+
+@scratch:
+    cd ~/Documents/scratchpad/ && $EDITOR "scratch_"(date +"%d-%m-%y_%s").md -c "MarkdownPreview"
