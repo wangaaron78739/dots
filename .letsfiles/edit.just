@@ -25,7 +25,7 @@ git:
     $EDITOR ~/.gitconfig
 
 install:
-    cd ~/install-system.sh/ && $EDITOR Justfile
+    cd ~/.install-system.sh/ && $EDITOR Justfile
 
 kitty:
     cd ~/.config/ && $EDITOR kitty/kitty.conf
@@ -38,3 +38,12 @@ cargo:
 
 hypr:
     cd ~/.config/hypr && $EDITOR
+
+ags:
+    cd ~/.config/ags && $EDITOR
+
+wezterm:
+    cd ~/.config/wezterm && $EDITOR
+
+yay:
+    cd ~/.install-system.sh/ && $EDITOR apps.yay

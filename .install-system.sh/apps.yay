@@ -1,4 +1,5 @@
 zoxide
 ripgrep
 fd
-
+via-bin
+wl-clipboard
